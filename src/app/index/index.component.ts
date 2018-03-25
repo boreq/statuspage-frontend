@@ -29,6 +29,21 @@ export class IndexComponent implements OnInit {
   }
 
   private handleStatus(status: Status[]) {
+    status.sort((a, b) => {
+      if (!a.config) {
+          return -1;
+      }
+      if (!b.config) {
+          return 1;
+      }
+      if (a.config.name < b.config.name) {
+        return -1;
+      }
+      if (a.config.name > b.config.name) {
+        return 1;
+      }
+      return 0;
+    });
     this.status = status;
   }
 

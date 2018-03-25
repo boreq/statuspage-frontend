@@ -1,7 +1,12 @@
 <div class="wrapper">
     <div class="container">
         <div *ngFor="let s of status">
-          {{ s.config.name }}
+            <div class="script {{s.status}}">
+                <div *ngIf="s.config" class="name">{{s.config?.name}}</div>
+                <div *ngIf="!s.config" class="name">Invalid config</div>
+
+                <div class="status">{{s.status}}</div>
+            </div>
         </div>
     </div>
 </div>
