@@ -16,10 +16,12 @@ const updateEvery = 30 * 1000;
 export class IndexComponent implements OnInit {
 
   status: Status[];
+  date: Date;
+  updating: boolean;
 
   constructor(
     private statusService: StatusService,
-	private modalService: NgbModal) { }
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.update();
@@ -30,12 +32,15 @@ export class IndexComponent implements OnInit {
   }
 
   private update() {
+    this.updating = true;
     this.statusService.getStatus()
       .subscribe((status) => this.handleStatus(status));
     setTimeout(() => this.update(), updateEvery);
   }
 
   private handleStatus(status: Status[]) {
+    this.updating = false;
+    this.date = new Date();
     status.sort((a, b) => {
       if (!a.config) {
           return -1;

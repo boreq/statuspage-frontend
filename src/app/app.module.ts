@@ -8,14 +8,12 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { StatusService } from './status.service';
-import { TimeAgoPipe } from './timeago.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    TimeAgoPipe
+    IndexComponent
   ],
   imports: [
     BrowserModule,

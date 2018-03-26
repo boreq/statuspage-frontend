@@ -26,4 +26,14 @@
 
         </div>
     </div>
+    <div *ngIf="updating" class="container">
+        <div class="spinner dimmed">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="date dimmed">
+          {{date}}
+        </div>
+    </div>
 </div>
