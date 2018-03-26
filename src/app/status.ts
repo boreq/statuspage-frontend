@@ -5,4 +5,5 @@ export class Config {
 export class Status {
   config?: Config;
   status: string;
+  output?: string;
 }

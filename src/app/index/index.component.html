@@ -1,9 +1,11 @@
 <div class="wrapper">
     <div class="container">
         <div *ngFor="let s of status">
-            <div class="script {{s.status}}">
-                <div *ngIf="s.config" class="name">{{s.config?.name}}</div>
-                <div *ngIf="!s.config" class="name">Invalid config</div>
+            <div class="script {{s.status}}" placement="bottom" ngbTooltip="{{s?.output}}">
+                <div class="name">
+                  <span *ngIf="s.config">{{s.config?.name}}</span>
+                  <span *ngIf="!s.config">Invalid config</span>
+                </div>
 
                 <div class="status">{{s.status}}</div>
             </div>

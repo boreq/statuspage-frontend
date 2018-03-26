@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Status } from '../status';
 import { StatusService } from '../status.service';
 
-// How often the page is updated [ms].
+// How often the page is updated [ms]
 const updateEvery = 30 * 1000;
 
 @Component({
