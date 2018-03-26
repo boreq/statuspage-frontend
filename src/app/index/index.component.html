@@ -1,14 +1,29 @@
 <div class="wrapper">
     <div class="container">
         <div *ngFor="let s of status">
-            <div class="script {{s.status}}" placement="bottom" ngbTooltip="{{s?.output}}">
-                <div class="name">
-                  <span *ngIf="s.config">{{s.config?.name}}</span>
-                  <span *ngIf="!s.config">Invalid config</span>
-                </div>
 
-                <div class="status">{{s.status}}</div>
+          <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title">Output</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body">
+              <pre *ngIf="s.output">{{s.output}}</pre>
+              <pre *ngIf="!s.output" class="dimmed">No output.</pre>
+            </div>
+          </ng-template>
+
+          <div class="script {{s.status}}" (click)="showOutput(content)">
+            <div class="name">
+              <span *ngIf="s.config">{{s.config?.name}}</span>
+              <span *ngIf="!s.config">Invalid config</span>
+            </div>
+
+            <div class="status">{{s.status}}</div>
+          </div>
+
         </div>
     </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 import { Status } from '../status';
 import { StatusService } from '../status.service';
 
@@ -15,12 +17,17 @@ export class IndexComponent implements OnInit {
 
   status: Status[];
 
-  constructor(private statusService: StatusService) { }
+  constructor(
+    private statusService: StatusService,
+	private modalService: NgbModal) { }
 
   ngOnInit() {
     this.update();
   }
 
+  showOutput(content) {
+    this.modalService.open(content);
+  }
 
   private update() {
     this.statusService.getStatus()
